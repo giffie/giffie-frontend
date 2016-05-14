@@ -1,8 +1,8 @@
 import $ from 'jquery';
 import React from 'react';
-import {SearchResults} from 'giffie-frontend/js/SearchResults.js';
+import SearchResults from 'giffie-frontend/js/SearchResults.js';
 
-export class SearchView extends React.Component {
+export default class SearchView extends React.Component {
 
     constructor ( props ) {
         super( props );
