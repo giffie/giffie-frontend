@@ -1,0 +1,35 @@
+/* Color values */
+
+$white: #fff;
+$black: #000;
+$darkgrey: #333;
+$orange: #EE8E23;
+
+
+/* Color types */
+
+$bgcolor: $orange;
+$textcolor: $white;
+
+
+/* Typography */
+
+$basefont: "Anton","Arial", sans-serif;
+$titlefont: "Anton", "Arial", sans-serif;
+
+/**************/
+
+* {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $bgcolor;
+    color: $textcolor;
+    font-family: $basefont;
+}

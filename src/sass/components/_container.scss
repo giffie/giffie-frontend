@@ -1,0 +1,12 @@
+#container {
+    margin: 0 auto;
+    padding: 0 8px;
+    max-width: 1024px;
+    height: 100%;
+}
+
+#app {
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+}

@@ -1,0 +1,26 @@
+.search-results {
+    flex: 1;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.search-result__item {
+    width: 50%;
+    height: 100px;
+
+    display: inline-block;
+
+    overflow: hidden;
+
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+@media all and ( min-width: 400px ) {
+
+    .search-result__item {
+        width: 25%;
+        height: 113px;
+    }
+}
