@@ -2,94 +2,38 @@
   "name": "giffie-frontend",
   "description": "The front end of http://www.giffie.nl",
   "version": "0.1.0",
+  "dependencies": {
+    "debug": "^2.2.0",
+    "express": "^4.13.4",
+    "express-handlebars": "^3.0.0",
+    "request": "^2.72.0"
+  },
   "devDependencies": {
-    "http-server": "^0.9.0",
-    "jspm": "^0.17.0-beta.14",
+    "jquery": "^2.2.3",
     "mustang": "github:vpro/mustang",
     "node-sass": "^3.7.0",
     "nodemon": "^1.9.2",
-    "rimraf": "^2.5.2"
-  },
-  "jspm": {
-    "name": "giffie-frontend",
-    "directories": {
-      "lib": "src"
-    },
-    "dependencies": {
-      "babel-types": "npm:babel-types@6.7.7",
-      "jquery": "npm:jquery@^2.2.3",
-      "react-dom": "npm:react-dom@^15.0.2"
-    },
-    "devDependencies": {
-      "babel-plugin-transform-react-jsx": "npm:babel-plugin-transform-react-jsx@^6.8.0",
-      "plugin-babel": "npm:systemjs-plugin-babel@^0.0.10"
-    },
-    "peerDependencies": {
-      "assert": "github:jspm/nodelibs-assert@^0.2.0-alpha",
-      "buffer": "github:jspm/nodelibs-buffer@^0.2.0-alpha",
-      "core-js": "npm:core-js@^1.2.0",
-      "domain": "github:jspm/nodelibs-domain@^0.2.0-alpha",
-      "events": "github:jspm/nodelibs-events@^0.2.0-alpha",
-      "fs": "github:jspm/nodelibs-fs@^0.2.0-alpha",
-      "http": "github:jspm/nodelibs-http@^0.2.0-alpha",
-      "https": "github:jspm/nodelibs-https@^0.2.0-alpha",
-      "net": "github:jspm/nodelibs-net@^0.2.0-alpha",
-      "path": "github:jspm/nodelibs-path@^0.2.0-alpha",
-      "process": "github:jspm/nodelibs-process@^0.2.0-alpha",
-      "react": "npm:react@^15.0.2",
-      "stream": "github:jspm/nodelibs-stream@^0.2.0-alpha",
-      "string_decoder": "github:jspm/nodelibs-string_decoder@^0.2.0-alpha",
-      "tty": "github:jspm/nodelibs-tty@^0.2.0-alpha",
-      "url": "github:jspm/nodelibs-url@^0.2.0-alpha",
-      "util": "github:jspm/nodelibs-util@^0.2.0-alpha",
-      "zlib": "github:jspm/nodelibs-zlib@^0.2.0-alpha"
-    },
-    "overrides": {
-      "npm:babel-runtime@5.8.38": {
-        "main": false,
-        "dependencies": {},
-        "optionalDependencies": {
-          "core-js": "^1.2.0"
-        }
-      },
-      "npm:browserify-zlib@0.1.4": {
-        "dependencies": {
-          "readable-stream": "^2.0.2",
-          "pako": "~0.2.0"
-        },
-        "map": {
-          "_stream_transform": "readable-stream/transform"
-        }
-      },
-      "npm:inherits@2.0.1": {
-        "ignore": [
-          "test.js"
-        ]
-      },
-      "npm:jquery@2.2.3": {
-        "format": "amd"
-      }
-    }
+    "rimraf": "^2.5.2",
+    "stapes": "^0.8.1",
+    "systemjs": "^0.19.27",
+    "systemjs-builder": "^0.15.16",
+    "traceur": "0.0.108"
   },
   "scripts": {
-    "postinstall": "jspm install",
     "prebuild:dev": "rimraf dev/ && mkdir dev",
-    "build:dev": "npm run html:dev && npm run css:dev && npm run assets:dev && npm run script:dev",
-    "assets:dev": "cp -r src/assets dev/",
+    "build:dev": "npm run css:dev",
     "css:dev": "node-sass src/sass/style.scss --output dev/css",
-    "html:dev": "mustang -j '{\"dev\":true}' -t src/index.tmpl -o dev/index.html",
-    "script:dev": "cp -r src/js dev/",
-    "watch:dev": "nodemon --watch src/ -e js,scss,tmpl --exec npm run build:dev",
+    "watch:dev": "nodemon --watch src/ --watch routes/ -e scss,js,hbs --exec npm run dev",
     "predev": "npm run build:dev",
-    "dev": "http-server -p 9090",
+    "dev": "DEBUG=giffie-frontend* npm start",
     "prebuild:prod": "rimraf dist/ && mkdir dist",
     "build:prod": "npm run html:prod && npm run css:prod && npm run assets:prod && npm run script:prod",
     "assets:prod": "cp -r src/assets dist/",
     "css:prod": "node-sass src/sass/style.scss --output dist/css",
     "html:prod": "mustang -j '{\"dev\":false}' -t src/index.tmpl -o dist/index.html",
-    "script:prod": "jspm bundle-sfx src/js/impl.js dist/js/impl.sfx.js",
-    "watch:prod": "nodemon --watch src/ --exec npm run build:prod",
+    "script:prod": "node build.sfx.js",
+    "watch:prod": "nodemon --watch src/ --watch routes/ -e scss,js,hbs --exec npm run build:prod",
     "preprod": "npm run build:prod",
-    "prod": "http-server dist/ -p 9090"
+    "prod": "NODE_ENV=production npm start"
   }
 }

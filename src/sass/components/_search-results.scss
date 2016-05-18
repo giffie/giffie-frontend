@@ -8,7 +8,8 @@
     width: 50%;
     height: 100px;
 
-    display: inline-block;
+    display: block;
+    float: left;
 
     overflow: hidden;
 
@@ -17,7 +18,7 @@
     background-repeat: no-repeat;
 }
 
-@media all and ( min-width: 400px ) {
+@media all and ( min-width: 450px ) {
 
     .search-result__item {
         width: 25%;

@@ -4,3 +4,9 @@
 
     background: url('../assets/img/Poweredby_100px-Black_VertLogo.png') right center no-repeat;
 }
+
+.main-header__link,
+.main-header__link:hover,
+.main-header__link:active {
+    text-decoration: none;
+}
