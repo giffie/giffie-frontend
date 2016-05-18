@@ -29,9 +29,6 @@ export default Stapes.subclass({
         }
     },
 
-    /**
-     * Return path and query var info of the current location
-     */
     getNavigationState: function () {
         return {
             path: document.location.pathname,
