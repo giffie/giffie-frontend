@@ -6,14 +6,6 @@ import AbstractController from './AbstractController.js';
 import DetailController from './DetailController.js';
 import SearchController from './SearchController.js';
 
-/*
-
-PushState
-
--   app start de juiste view op met route
--   view laadt de data, rendert en luistert naar events
- */
-
 export default AbstractController.subclass({
 
     constructor: function () {
